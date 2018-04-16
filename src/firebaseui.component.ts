@@ -57,12 +57,10 @@ export class FirebaseUIComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.subscription = this.angularFireAuth.authState.subscribe(value => {
-            if (!value) {
-                if (this.firebaseUiConfig.providers.length !== 0) {
-                    this.firebaseUIPopup();
-                } else {
-                    throw new Error('There must be at least one AuthProvider.');
-                }
+            if (this.firebaseUiConfig.providers.length !== 0) {
+                this.firebaseUIPopup();
+            } else {
+                throw new Error('There must be at least one AuthProvider.');
             }
         });
     }
