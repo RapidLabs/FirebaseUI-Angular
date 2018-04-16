@@ -122,12 +122,16 @@ export class FirebaseUIComponent implements OnInit, OnDestroy {
                         redirectUrl
                     });
                     return !!authConfig.signInSuccessUrl;
+                },
+                signInFailure: (error) => {
+                    throw new Error(error)
                 }
             },
             signInFlow: authMethod,
             signInOptions: authProviders,
             tosUrl: tosURL,
-            credentialHelper: credentialHelper
+            credentialHelper: credentialHelper,
+            autoUpgradeAnonymousUsers: true
         };
         if (!!authConfig.signInSuccessUrl) {
             nativeConfiguration.signInSuccessUrl = authConfig.signInSuccessUrl;
@@ -150,4 +154,5 @@ interface FirebaseUINativeConfiguration {
     signInOptions?: any;
     signInSuccessUrl?: string;
     tosUrl: string;
+    autoUpgradeAnonymousUsers: boolean;
 }
