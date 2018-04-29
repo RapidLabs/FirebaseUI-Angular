@@ -4,7 +4,7 @@
  * Copyright (c) 2017 Raphael Jenni
  */
 
-import * as firebase from 'firebase/app';
+import * as firebase from 'firebase';
 import AuthCredential = firebase.auth.AuthCredential;
 import User = firebase.User;
 
